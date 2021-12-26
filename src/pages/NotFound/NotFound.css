@@ -1,0 +1,18 @@
+.notFoundPage {
+    width: 60%;
+    margin-top:100px;
+    margin-left: 200px;
+}
+.notFoundPage > img {
+    object-fit: contain;
+    height: 250px;
+}
+
+.notFoundPage__text {
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.57);
+}
+.notFoundPage__description{
+    padding-top: 10px;
+    color: rgba(0, 0, 0, 0.57);
+}
