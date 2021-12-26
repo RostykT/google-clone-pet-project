@@ -1,19 +1,40 @@
-import React from 'react';
+import {useState} from 'react';
 import './SearchInput.css';
+
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import MicIcon from '@mui/icons-material/Mic';
 import Tooltip from '@mui/material/Tooltip';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 
+import {useHistory} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {searchAction} from '../../redux/search/searchSlice';
+
 const SearchInput = () => {
+  const [input, setInput] = useState('');
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const searchInput = (term) => {
+    dispatch(searchAction.searchInput(term));
+    console.log(term);
+  };
+    //   const removeInput = (term) => {
+    //     dispatch(searchAction.removeInput(term));
+    //   };
+  const search = (e) => {
+    e.preventDefault();
+    history.push('/search');
+    searchInput(input);
+  };
+
   return (
     <form className="search">
       <div className="search__input">
         <Tooltip title="Search">
           <SearchIcon className="search__inputIcon" />
         </Tooltip>
-        <input />
+        <input value={input} onChange={(e) => setInput(e.target.value)}/>
         <Tooltip title="transliteration">
           <KeyboardIcon className="search__inputIcon"/>
         </Tooltip>
@@ -22,7 +43,7 @@ const SearchInput = () => {
         </Tooltip>
       </div>
       <div className="search__buttons">
-        <Button type="submit"> Google Search</Button>
+        <Button type="submit" onClick={search}> Google Search</Button>
         <Button> I&apos;m Feeling Lucky</Button>
       </div>
     </form>
