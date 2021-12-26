@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import PropTypes from 'prop-types';
 import './SearchInput.css';
 
 import Button from '@mui/material/Button';
@@ -11,7 +12,7 @@ import {useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {searchAction} from '../../redux/search/searchSlice';
 
-const SearchInput = () => {
+const SearchInput = ({buttonHidden}) => {
   const [input, setInput] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
@@ -42,12 +43,20 @@ const SearchInput = () => {
           <MicIcon className="search__inputIcon"/>
         </Tooltip>
       </div>
-      <div className="search__buttons">
-        <Button type="submit" onClick={search}> Google Search</Button>
-        <Button> I&apos;m Feeling Lucky</Button>
-      </div>
+      {!buttonHidden && (
+        <div className="search__buttons">
+          <Button type="submit" onClick={search}> Google Search</Button>
+          <Button> I&apos;m Feeling Lucky</Button>
+        </div>
+      )}
     </form>
   );
+};
+SearchInput.propTypes = {
+  buttonHidden: PropTypes.bool,
+};
+SearchInput.defaultProps = {
+  buttonHidden: false,
 };
 
 export default SearchInput;
