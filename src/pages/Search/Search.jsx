@@ -2,6 +2,7 @@ import './Search.css';
 import Logo from '../../assets/google_logo.png';
 import {Link} from 'react-router-dom';
 import SearchInput from '../../components/SearchInput/SearchInput';
+import AppMenuDropdown from '../../components/AppMenuDropdown/AppMenuDropdown';
 // import useGoogleSearch from '../../components/useGoogleSearch';
 
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
@@ -14,13 +15,19 @@ import Avatar from '@mui/material/Avatar';
 import AppsIcon from '@mui/icons-material/Apps';
 
 
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
 
 // mock data;
 import response from '../../response';
 
 const Search = () => {
   const term = useSelector((state) => state.search.term);
+  const hidden = useSelector((state) => state.dropdown.dropdownHidden);
+  const dispatch = useDispatch();
+  const toggle = () => {
+    dispatch(appDropdownAction.toggleDropdown());
+  };
   // Mock api
   const data = response;
 
@@ -74,7 +81,8 @@ const Search = () => {
           </div>
         </div>
         <div className="searchPage__headerRight">
-          <AppsIcon className="searchPage__appsIcon"/>
+          <AppsIcon className="searchPage__appsIcon" onClick={toggle}/>
+          {!hidden && <AppMenuDropdown />}
           <Avatar />
         </div>
       </div>

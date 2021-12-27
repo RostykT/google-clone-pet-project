@@ -1,0 +1,39 @@
+.dropdown {
+    position: absolute;
+    width: 310px;
+    height: 350px;
+    max-height: 430px;
+    overflow-y: scroll;
+    background-color: #f8f8f8;
+    z-index: 4;
+    top: 70px;
+    border-radius: 14px;
+    border: 1px solid lightgrey;
+    box-shadow: 1px 2px 5px 1px rgba(34, 60, 80, 0.2);
+    right: 15px;
+    padding: 20px 15px 26px 20px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1vw;
+}
+
+.dropdown::-webkit-scrollbar{
+	width: 13px;
+}
+
+.dropdown::-webkit-scrollbar-track-piece{
+	background-color: #f8f8f8;
+}
+
+.dropdown::-webkit-scrollbar-thumb{
+	background-color: #CBCBCB;
+	outline: 2px solid #FFF;
+	outline-offset: -2px;
+	border: .1px solid #B7B7B7;
+    border-radius: 14px;
+}
+
+.dropdown::-webkit-scrollbar-button {
+    height: 10px;
+  }

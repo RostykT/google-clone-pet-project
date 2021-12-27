@@ -1,12 +1,22 @@
 import './Home.css';
 import SearchInput from '../../components/SearchInput/SearchInput';
+import Logo from '../../assets/google_logo.png';
 import {Link} from 'react-router-dom';
+
 import AppsIcon from '@mui/icons-material/Apps';
 import Avatar from '@mui/material/Avatar';
-import Logo from '../../assets/google_logo.png';
+
+import {useDispatch, useSelector} from 'react-redux';
+import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
+import AppMenuDropdown from '../../components/AppMenuDropdown/AppMenuDropdown';
 
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const toggle = () => {
+    dispatch(appDropdownAction.toggleDropdown());
+  };
+  const hidden = useSelector((state) => state.dropdown.dropdownHidden);
   return (
     <div className="home">
       <div className="home__header">
@@ -17,7 +27,8 @@ const Home = () => {
         <div className="home__headerRight">
           <Link to='/gmail'>Gmail</Link>
           <Link to='/images'>Images</Link>
-          <AppsIcon className="home__appsIcon"/>
+          <AppsIcon className="home__appsIcon" onClick={toggle}/>
+          {!hidden && <AppMenuDropdown />}
           <Avatar />
         </div>
       </div>

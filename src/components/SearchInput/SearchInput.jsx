@@ -18,7 +18,6 @@ const SearchInput = ({buttonHidden}) => {
   const history = useHistory();
   const searchInput = (term) => {
     dispatch(searchAction.searchInput(term));
-    console.log(term);
   };
     //   const removeInput = (term) => {
     //     dispatch(searchAction.removeInput(term));
