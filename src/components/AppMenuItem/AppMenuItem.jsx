@@ -2,7 +2,6 @@ import React from 'react';
 import './AppMenuItem.css';
 import PropTypes from 'prop-types';
 
-
 const AppMenuItem = ({image, alt, title}) => {
   return (
     <div className="appItem">

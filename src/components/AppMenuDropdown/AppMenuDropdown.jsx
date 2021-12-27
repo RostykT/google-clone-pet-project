@@ -20,6 +20,7 @@ import TensorFlow from '../../assets/tensor-flow.png';
 
 import {Link} from 'react-router-dom';
 
+// TODO: DRY, fix it
 const AppMenuDropdown = () => {
   return (
     <div className="dropdown">

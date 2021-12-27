@@ -4,11 +4,14 @@ import Logo from '../../assets/google_logo.png';
 import {Link} from 'react-router-dom';
 
 import AppsIcon from '@mui/icons-material/Apps';
-import Avatar from '@mui/material/Avatar';
+// import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
 import AppMenuDropdown from '../../components/AppMenuDropdown/AppMenuDropdown';
+
+import {signInWithGoogle} from '../../firabase/firebase';
 
 
 const Home = () => {
@@ -29,7 +32,13 @@ const Home = () => {
           <Link to='/images'>Images</Link>
           <AppsIcon className="home__appsIcon" onClick={toggle}/>
           {!hidden && <AppMenuDropdown />}
-          <Avatar />
+          <Button
+            variant="contained"
+            size="large"
+            onClick={signInWithGoogle}>
+            Sign In
+          </Button>
+          {/* <Avatar /> */}
         </div>
       </div>
       <div className="home__body">

@@ -11,6 +11,8 @@ import KeyboardIcon from '@mui/icons-material/Keyboard';
 import {useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {searchAction} from '../../redux/search/searchSlice';
+import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
+
 
 const SearchInput = ({buttonHidden}) => {
   const [input, setInput] = useState('');
@@ -19,6 +21,9 @@ const SearchInput = ({buttonHidden}) => {
   const searchInput = (term) => {
     dispatch(searchAction.searchInput(term));
   };
+  const toggle = () => {
+    dispatch(appDropdownAction.toggleDropdown());
+  };
     //   const removeInput = (term) => {
     //     dispatch(searchAction.removeInput(term));
     //   };
@@ -26,6 +31,7 @@ const SearchInput = ({buttonHidden}) => {
     e.preventDefault();
     history.push('/search');
     searchInput(input);
+    toggle();
   };
 
   return (
