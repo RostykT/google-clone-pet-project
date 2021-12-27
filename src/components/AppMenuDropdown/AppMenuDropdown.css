@@ -1,8 +1,8 @@
 .dropdown {
     position: absolute;
-    width: 310px;
-    height: 350px;
-    max-height: 430px;
+    width: 330px;
+    height: 420px;
+    max-height: 530px;
     overflow-y: scroll;
     background-color: #f8f8f8;
     z-index: 4;
@@ -11,11 +11,11 @@
     border: 1px solid lightgrey;
     box-shadow: 1px 2px 5px 1px rgba(34, 60, 80, 0.2);
     right: 15px;
-    padding: 20px 15px 26px 20px;
+    padding: 10px 0px 0px 10px;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1vw;
+    /* grid-gap: 1vw; */
 }
 
 .dropdown::-webkit-scrollbar{
