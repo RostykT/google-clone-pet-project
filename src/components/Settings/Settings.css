@@ -28,5 +28,21 @@
 
 .light_mode {
     padding-left: 35px;
-    
+}
+
+.settings_dark_light {
+    padding-top: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #70757a;
+    display: flex;
+}
+
+.settings_dark_light > .MuiSvgIcon-root {
+    padding-left: 125px;
+    margin-top: -2px;
+}
+
+.settings_dark_light:hover {
+    text-decoration: underline;
 }

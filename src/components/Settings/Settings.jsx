@@ -16,16 +16,10 @@ const Settings = () => {
         <li>Search history</li>
         <li>Search help</li>
         <li>Send feedback</li>
-        <li onClick={toggleMode}>Dark theme:
-          {!dark ?
-            <span>
-              On <DarkModeOutlinedIcon className="light_mode"/>
-            </span> :
-            <span>
-              Off <LightModeOutlinedIcon className="light_mode"/>
-            </span>
-          }
-        </li>
+        <div className='settings_dark_light' onClick={toggleMode}>
+           Theme:
+          { dark ? <LightModeOutlinedIcon/> : <DarkModeOutlinedIcon/> }
+        </div>
       </ul>
     </div>
   );
