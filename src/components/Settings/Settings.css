@@ -1,0 +1,32 @@
+.settings {
+    position: absolute;
+    width: 250px;
+    height: 402px;
+    background-color: rgba(0, 0, 0, 0.1);
+    top: 51vh;
+    right: 15px;
+    border: 1px solid lightgrey;
+    z-index: 4;
+    
+}
+
+.settings ul {
+    list-style: none;
+    padding-left: 15px;
+}
+
+.settings li {
+    padding-top: 33px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #70757a;
+}
+
+.settings li:hover {
+    text-decoration: underline;
+}
+
+.light_mode {
+    padding-left: 35px;
+    
+}

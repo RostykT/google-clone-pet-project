@@ -20,10 +20,18 @@ import TensorFlow from '../../assets/tensor-flow.png';
 
 import {Link} from 'react-router-dom';
 
+import {useDispatch} from 'react-redux';
+import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
+
+
 // TODO: DRY, fix it
 const AppMenuDropdown = () => {
+  const dispatch = useDispatch();
+  const closeModal = () => {
+    dispatch(appDropdownAction.closeModal());
+  };
   return (
-    <div className="dropdown">
+    <div className="dropdown" onClick={closeModal}>
       <Link to='/firebase'>
         <AppMenuItem
           image={Firebase}

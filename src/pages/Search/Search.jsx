@@ -23,11 +23,15 @@ import response from '../../response';
 
 const Search = () => {
   const term = useSelector((state) => state.search.term);
-  const hidden = useSelector((state) => state.dropdown.dropdownHidden);
+  const hidden = useSelector((state) => state.dropdown.showAppModal);
   const dispatch = useDispatch();
-  const toggle = () => {
-    dispatch(appDropdownAction.toggleDropdown());
+  const toggleApp = () => {
+    dispatch(appDropdownAction.toggleApp());
   };
+  const closeAppModal = () => {
+    dispatch(appDropdownAction.closeAppModal());
+  };
+
   // Mock api
   const data = response;
 
@@ -38,7 +42,11 @@ const Search = () => {
       <div className="searchPage__header">
         <div className="searchPage__headerLeft">
           <Link to='/'>
-            <img src={Logo} alt='google-logo' className='searchPage__logo'/>
+            <img
+              src={Logo}
+              alt='google-logo'
+              className='searchPage__logo'
+              onClick={closeAppModal}/>
           </Link>
           <div className="searchPage__headerBody">
             <SearchInput buttonHidden/>
@@ -81,8 +89,8 @@ const Search = () => {
           </div>
         </div>
         <div className="searchPage__headerRight">
-          <AppsIcon className="searchPage__appsIcon" onClick={toggle}/>
-          {!hidden && <AppMenuDropdown />}
+          <AppsIcon className="searchPage__appsIcon" onClick={toggleApp}/>
+          {hidden && <AppMenuDropdown />}
           <Avatar />
         </div>
       </div>

@@ -1,15 +1,25 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  dropdownHidden: true,
+  showAppModal: false,
+  showSettingsModal: false,
 };
 
 export const appDropdownSlice = createSlice({
   name: 'dropdown',
   initialState,
   reducers: {
-    toggleDropdown: (state) => {
-      state.dropdownHidden = !state.dropdownHidden;
+    openAppModal: (state) => {
+      state.showAppModal = true;
+    },
+    closeAppModal: (state) => {
+      state.showAppModal = false;
+    },
+    toggleApp: (state) => {
+      state.showAppModal = !state.showAppModal;
+    },
+    toggleSettings: (state) => {
+      state.showSettingsModal =! state.showSettingsModal;
     },
   },
 });

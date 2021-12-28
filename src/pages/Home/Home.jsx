@@ -10,16 +10,23 @@ import Button from '@mui/material/Button';
 import {useDispatch, useSelector} from 'react-redux';
 import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
 import AppMenuDropdown from '../../components/AppMenuDropdown/AppMenuDropdown';
+import Settings from '../../components/Settings/Settings';
 
 import {signInWithGoogle} from '../../firabase/firebase';
 
 
 const Home = () => {
   const dispatch = useDispatch();
-  const toggle = () => {
-    dispatch(appDropdownAction.toggleDropdown());
+  const toggleApp = () => {
+    dispatch(appDropdownAction.toggleApp());
   };
-  const hidden = useSelector((state) => state.dropdown.dropdownHidden);
+  const toggleSettings = () => {
+    dispatch(appDropdownAction.toggleSettings());
+  };
+  const showAppModal = useSelector((state) => state.dropdown.showAppModal);
+  const showSettingsModal = useSelector((state) =>
+    state.dropdown.showSettingsModal);
+
   return (
     <div className="home">
       <div className="home__header">
@@ -30,8 +37,8 @@ const Home = () => {
         <div className="home__headerRight">
           <Link to='/gmail'>Gmail</Link>
           <Link to='/images'>Images</Link>
-          <AppsIcon className="home__appsIcon" onClick={toggle}/>
-          {!hidden && <AppMenuDropdown />}
+          <AppsIcon className="home__appsIcon" onClick={toggleApp}/>
+          {showAppModal && <AppMenuDropdown />}
           <Button
             variant="contained"
             size="large"
@@ -45,6 +52,17 @@ const Home = () => {
         <img src={Logo} alt={'google_logo'}/>
         <div className="home__inputContainer">
           <SearchInput />
+        </div>
+      </div>
+      <div className="home__footer">
+        <div className="home__footerLeft"></div>
+        <div className="home__footerRight">
+          { showSettingsModal && <Settings />}
+          <div className="home__footerRight_variant">
+            <p>Privacy</p>
+            <p>Terms</p>
+            <p onClick={toggleSettings}>Settings</p>
+          </div>
         </div>
       </div>
     </div>

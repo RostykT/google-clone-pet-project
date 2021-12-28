@@ -21,8 +21,8 @@ const SearchInput = ({buttonHidden}) => {
   const searchInput = (term) => {
     dispatch(searchAction.searchInput(term));
   };
-  const toggle = () => {
-    dispatch(appDropdownAction.toggleDropdown());
+  const closeModal = () => {
+    dispatch(appDropdownAction.closeModal());
   };
     //   const removeInput = (term) => {
     //     dispatch(searchAction.removeInput(term));
@@ -31,7 +31,7 @@ const SearchInput = ({buttonHidden}) => {
     e.preventDefault();
     history.push('/search');
     searchInput(input);
-    toggle();
+    closeModal();
   };
 
   return (
