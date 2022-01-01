@@ -21,6 +21,9 @@ export const appDropdownSlice = createSlice({
     toggleSettings: (state) => {
       state.showSettingsModal =! state.showSettingsModal;
     },
+    closeSettingsModal: (state) => {
+      state.showSettingsModal = false;
+    },
   },
 });
 

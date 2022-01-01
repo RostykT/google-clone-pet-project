@@ -14,21 +14,29 @@ import Settings from '../../components/Settings/Settings';
 
 import {signInWithGoogle} from '../../firabase/firebase';
 
-
 const Home = () => {
   const dispatch = useDispatch();
+  const closeAppModal = () => {
+    dispatch(appDropdownAction.closeAppModal());
+  };
+  const closeSettingsModal = () => {
+    dispatch(appDropdownAction.closeSettingsModal());
+  };
   const toggleApp = () => {
     dispatch(appDropdownAction.toggleApp());
+    closeSettingsModal();
   };
   const toggleSettings = () => {
     dispatch(appDropdownAction.toggleSettings());
+    closeAppModal();
   };
   const showAppModal = useSelector((state) => state.dropdown.showAppModal);
+  const dark = useSelector((state) => state.darkMode.dark);
   const showSettingsModal = useSelector((state) =>
     state.dropdown.showSettingsModal);
 
   return (
-    <div className="home">
+    <div className="home" data-theme={dark ? 'dark' : 'light'}>
       <div className="home__header">
         <div className="home__headerLeft">
           <Link to='/about'>About</Link>

@@ -4,11 +4,11 @@
     height: 420px;
     max-height: 530px;
     overflow-y: scroll;
-    background-color: #f8f8f8;
+    background-color: var(--button-background-color);
     z-index: 4;
     top: 70px;
     border-radius: 14px;
-    border: 1px solid lightgrey;
+    border: 1px solid var(--model-border);
     box-shadow: 1px 2px 5px 1px rgba(34, 60, 80, 0.2);
     right: 15px;
     padding: 10px 0px 0px 10px;
@@ -24,14 +24,13 @@
 }
 
 .dropdown::-webkit-scrollbar-track-piece{
-	background-color: #f8f8f8;
+	background-color:var(--button-background-color);
 }
 
 .dropdown::-webkit-scrollbar-thumb{
-	background-color: #CBCBCB;
-	outline: 2px solid #FFF;
+	background-color: var(--footer-color);
+	outline: 2px solid var(--button-background-color);
 	outline-offset: -2px;
-	border: .1px solid #B7B7B7;
     border-radius: 14px;
 }
 

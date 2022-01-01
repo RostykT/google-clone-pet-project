@@ -1,12 +1,22 @@
 import './Settings.css';
-import {useState} from 'react';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+
+import {useDispatch, useSelector} from 'react-redux';
+import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
+import {darkModeAction} from '../../redux/darkMode/darkModeSlice';
+
 const Settings = () => {
-  const [dark, setDark] = useState(false);
-  const toggleMode = () => {
-    setDark(!dark);
+  const dispatch = useDispatch();
+  const closeSettingsModal = () => {
+    dispatch(appDropdownAction.closeSettingsModal());
   };
+  const toggleDarkMode = () => {
+    dispatch(darkModeAction.toggleDarkMode());
+    closeSettingsModal();
+  };
+  const dark = useSelector((state) => state.darkMode.dark);
+
   return (
     <div className="settings">
       <ul>
@@ -16,7 +26,7 @@ const Settings = () => {
         <li>Search history</li>
         <li>Search help</li>
         <li>Send feedback</li>
-        <div className='settings_dark_light' onClick={toggleMode}>
+        <div className='settings_dark_light' onClick={toggleDarkMode}>
            Theme:
           { dark ? <LightModeOutlinedIcon/> : <DarkModeOutlinedIcon/> }
         </div>
