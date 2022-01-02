@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
   showAppModal: false,
   showSettingsModal: false,
+  showUserModal: false,
 };
 
 export const appDropdownSlice = createSlice({
@@ -23,6 +24,12 @@ export const appDropdownSlice = createSlice({
     },
     closeSettingsModal: (state) => {
       state.showSettingsModal = false;
+    },
+    toggleUserModal: (state) => {
+      state.showUserModal = !state.showUserModal;
+    },
+    closeUserModal: (state) => {
+      state.showUserModal = false;
     },
   },
 });

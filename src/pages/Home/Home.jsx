@@ -2,36 +2,60 @@ import './Home.css';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import Logo from '../../assets/google_logo.png';
 import {Link} from 'react-router-dom';
+import {Fragment} from 'react';
 
 import AppsIcon from '@mui/icons-material/Apps';
-// import Avatar from '@mui/material/Avatar';
+import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+
 
 import {useDispatch, useSelector} from 'react-redux';
 import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
 import AppMenuDropdown from '../../components/AppMenuDropdown/AppMenuDropdown';
+import UserModal from '../../components/UserModal/UserModal';
 import Settings from '../../components/Settings/Settings';
 
-import {signInWithGoogle} from '../../firabase/firebase';
+import {signInWithGoogle, auth} from '../../firabase/firebase';
 
 const Home = () => {
+  const user = auth.currentUser;
+
   const dispatch = useDispatch();
+
   const closeAppModal = () => {
     dispatch(appDropdownAction.closeAppModal());
   };
+
+  const closeUserModal = () => {
+    dispatch(appDropdownAction.closeUserModal());
+  };
+
   const closeSettingsModal = () => {
     dispatch(appDropdownAction.closeSettingsModal());
   };
+
   const toggleApp = () => {
     dispatch(appDropdownAction.toggleApp());
     closeSettingsModal();
+    closeUserModal();
   };
+
   const toggleSettings = () => {
     dispatch(appDropdownAction.toggleSettings());
     closeAppModal();
+    closeUserModal();
   };
+
+  const toggleUserModal = () => {
+    dispatch(appDropdownAction.toggleUserModal());
+    closeAppModal();
+    closeSettingsModal();
+  };
+
   const showAppModal = useSelector((state) => state.dropdown.showAppModal);
   const dark = useSelector((state) => state.darkMode.dark);
+  const userModal = useSelector((state) => state.dropdown.showUserModal);
   const showSettingsModal = useSelector((state) =>
     state.dropdown.showSettingsModal);
 
@@ -47,13 +71,24 @@ const Home = () => {
           <Link to='/images'>Images</Link>
           <AppsIcon className="home__appsIcon" onClick={toggleApp}/>
           {showAppModal && <AppMenuDropdown />}
-          <Button
-            variant="contained"
-            size="large"
-            onClick={signInWithGoogle}>
-            Sign In
-          </Button>
-          {/* <Avatar /> */}
+          {user ? <Fragment>
+            <Tooltip title={`${user.multiFactor.user.displayName}`}>
+              <Avatar
+                alt={user.multiFactor.user.displayName}
+                src={user.multiFactor.user.photoURL}
+                className="home__Avatar"
+                onClick={toggleUserModal}
+              />
+            </Tooltip>
+            {userModal && <UserModal/>}
+          </Fragment> : (
+            <Button
+              variant="contained"
+              size="large"
+              onClick={signInWithGoogle}>
+              Sign In
+            </Button>
+          )}
         </div>
       </div>
       <div className="home__body">

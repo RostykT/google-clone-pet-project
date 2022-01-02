@@ -4,7 +4,7 @@
     height: 420px;
     max-height: 530px;
     overflow-y: scroll;
-    background-color: var(--model-bg);
+    background-color: var(--main-bg);
     z-index: 4;
     top: 70px;
     border-radius: 14px;

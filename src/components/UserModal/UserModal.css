@@ -1,0 +1,117 @@
+.userModal {
+    position: absolute;
+    width: 420px;
+    height: 520px;
+    background-color: var(--main-bg);
+    z-index: 4;
+    border-radius: 14px;
+    border: 1px solid var(--model-border);
+    box-shadow: 1px 2px 5px 1px rgba(34, 60, 80, 0.2);
+    top: 75px;
+    right: 15px;    
+}
+
+.userModal__mainContent {
+    height: 55%;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top:30px;
+    color:rgb(110, 110, 110);
+}
+
+.userModal__account {
+    height: 13%;
+    border-bottom: 1px solid lightgrey;
+}
+
+.userModal__auth {
+    height: 16%;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.userModal__auth  button {
+    width: 110px;
+    height: 45px;
+    border-radius: 3px;
+    border: 1px solid lightgrey;
+    background-color: transparent;
+    transition: all 0.5s;
+}
+.userModal__auth  button p {
+    font-size: 16px;
+    color:rgb(110, 110, 110);
+}
+
+.userModal__auth  button:hover {
+    background-color: rgb(243, 243, 243)
+}
+
+.userModal__account_button {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    transition: all 0.5s;
+    cursor: pointer;
+    color:rgb(110, 110, 110);
+}
+
+.userModal__account_button > .MuiSvgIcon-root {
+    margin-right: 20px;
+}
+
+.userModal__account_button:hover {
+    background-color: rgb(243, 243, 243)
+}
+
+.userModal__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:rgb(110, 110, 110);
+    margin-top: 17px;
+    font-size: 15px
+}
+
+.userModal__footerRight {
+    margin-left: 30px;
+    cursor: pointer;
+}
+.userModal__footerLeft {
+    cursor: pointer;
+}
+
+.userModal__footerLeft:hover, .userModal__footerRight:hover{
+    text-decoration: underline;
+}
+
+.userModal__mainContentInfo {
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    align-items: center;
+
+}
+
+.userModal__mainContentInfo_Name {
+    font-size: 20px;
+    padding-bottom: 10px;
+    color:rgb(56, 56, 56);
+}
+
+.userModal__mainContentInfo_button {
+    border: 1px solid lightgrey;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.userModal__mainContentInfo_button:hover{
+    background-color: rgb(243, 243, 243)
+}
