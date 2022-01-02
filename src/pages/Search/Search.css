@@ -1,3 +1,7 @@
+.searchBody {
+    background-color: var(--main-bg);
+    height:100%;
+}
 .searchPage__logo {
     object-fit: contain;
     height: 60px;
@@ -6,9 +10,9 @@
 
 .searchPage__header {
     display: flex;
-    position: sticky;
+    /* position: sticky; */
     top: 0;
-    background-color: white;
+    /* background-color: var(--main-bg); */
     z-index: 100;
     align-items: center;
     padding: 30px;
@@ -75,6 +79,7 @@ display: flex;
 
 .searchPage__result {
     margin: 40px 0;
+
 }
 
 .searchPage__resultCount {
@@ -87,11 +92,12 @@ display: flex;
     margin-top: 20px;
     margin-left: 240px;
     margin-bottom: 100px;
+    background-color: var(--main-bg);
 }
 
 .searchPage__resultTitle {
     text-decoration: none;
-    color:#1a0dad
+    /* color:#1a0dad */
 }
 .searchPage__resultTitle:hover {
     text-decoration: underline;
@@ -102,6 +108,7 @@ display: flex;
 
 .searchPage__resultSnippet {
     margin-top: 10px;
+    color: var(--main-text-color)
 }
 
 .searchPage__resultImage {
@@ -113,5 +120,5 @@ display: flex;
 
 .searchPage__resulLink {
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.87);
+    color: var(--main-text-color)
 }

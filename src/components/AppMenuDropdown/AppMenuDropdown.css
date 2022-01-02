@@ -4,7 +4,7 @@
     height: 420px;
     max-height: 530px;
     overflow-y: scroll;
-    background-color: var(--button-background-color);
+    background-color: var(--model-bg);
     z-index: 4;
     top: 70px;
     border-radius: 14px;
@@ -15,21 +15,15 @@
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    /* grid-gap: 1vw; */
     row-gap: 7rem;
 }
 
 .dropdown::-webkit-scrollbar{
-	width: 13px;
-}
-
-.dropdown::-webkit-scrollbar-track-piece{
-	background-color:var(--button-background-color);
+	width: 10px;
 }
 
 .dropdown::-webkit-scrollbar-thumb{
-	background-color: var(--footer-color);
-	outline: 2px solid var(--button-background-color);
+	background-color: var(--model-slider);
 	outline-offset: -2px;
     border-radius: 14px;
 }

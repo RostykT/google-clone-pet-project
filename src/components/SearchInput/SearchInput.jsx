@@ -22,7 +22,7 @@ const SearchInput = ({buttonHidden}) => {
     dispatch(searchAction.searchInput(term));
   };
   const closeModal = () => {
-    dispatch(appDropdownAction.closeModal());
+    dispatch(appDropdownAction.closeAppModal());
   };
     //   const removeInput = (term) => {
     //     dispatch(searchAction.removeInput(term));

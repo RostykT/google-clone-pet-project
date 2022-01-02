@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background: var(--background);
+    background: var(--main-bg);
 }
 
 
@@ -16,7 +16,7 @@
 .home__header a {
     margin-right: 20px;
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--main-text-color);
     font-size: 15px;
 }
 
@@ -36,7 +36,7 @@
     margin-right: 20px;
 }
 .home__appsIcon {
-    color: var(--text-color);
+    color: var(--main-text-color);
     cursor: pointer;
     margin:  0, 10px, 0, 15px ;
 }
@@ -58,10 +58,10 @@
 }
 
 .home__footer {
-    border-top: 1px solid var(--footer-border-color);
+    border-top: 1px solid var(--footer-border);
     display: flex;
     height: 60px;
-    background-color: var(--footer-color);
+    background-color: var(--footer-bg);
     justify-content: flex-end;
     align-items: center;
 }
