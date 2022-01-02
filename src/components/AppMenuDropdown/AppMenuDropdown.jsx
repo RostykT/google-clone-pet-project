@@ -1,140 +1,188 @@
 import './AppMenuDropdown.css';
 import AppMenuItem from '../AppMenuItem/AppMenuItem';
-import Firebase from '../../assets/firebase.png';
-import Documents from '../../assets/documents.png';
-import YouTube from '../../assets/youtube.png';
-import Sheets from '../../assets/sheets.png';
-import Gmail from '../../assets/gmail.png';
-import Keep from '../../assets/keep.png';
-import Drive from '../../assets/drive.png';
-import Maps from '../../assets/maps.png';
-import Photo from '../../assets/photo.png';
-import Calendar from '../../assets/calendar.png';
-import Meets from '../../assets/meets.png';
-import Duo from '../../assets/duo.png';
-import Chats from '../../assets/chats.png';
-import Chrome from '../../assets/chrome.png';
-import Slides from '../../assets/slides.png';
-import News from '../../assets/news.png';
-import TensorFlow from '../../assets/tensor-flow.png';
 
 import {Link} from 'react-router-dom';
 
 import {useDispatch} from 'react-redux';
 import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
 
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
+import {useState} from 'react';
 
-// TODO: DRY, fix it
+
+const googleApps = [
+  {
+    id: 'calendar',
+    title: 'Calendar',
+    alt: 'google-calendar',
+    image: '/images/calendar.png',
+    link: '/calendar',
+  },
+  {
+    id: 'chats',
+    title: 'Chats',
+    alt: 'google-chats',
+    image: '/images/chats.png',
+    link: '/chats',
+  },
+  {
+    id: 'chrome',
+    title: 'Chrome',
+    alt: 'google-chrome',
+    image: '/images/chrome.png',
+    link: '/chrome',
+  },
+  {
+    id: 'documents',
+    title: 'Documents',
+    alt: 'google-documents',
+    image: '/images/documents.png',
+    link: '/documents',
+  },
+  {
+    id: 'drive',
+    title: 'Drive',
+    alt: 'google-drive',
+    image: '/images/drive.png',
+    link: '/drive',
+  },
+  {
+    id: 'duo',
+    title: 'Duo',
+    alt: 'google-duo',
+    image: '/images/duo.png',
+    link: '/duo',
+  },
+  {
+    id: 'gmail',
+    title: 'Gmail',
+    alt: 'google-gmail',
+    image: '/images/gmail.png',
+    link: '/gmail',
+  },
+  {
+    id: 'keep',
+    title: 'Keep',
+    alt: 'google-keep',
+    image: '/images/keep.png',
+    link: '/keep',
+  },
+  {
+    id: 'maps',
+    title: 'Maps',
+    alt: 'google-maps',
+    image: '/images/maps.png',
+    link: '/maps',
+  },
+  {
+    id: 'meets',
+    title: 'Meets',
+    alt: 'google-meets',
+    image: '/images/meets.png',
+    link: '/meets',
+  },
+  {
+    id: 'news',
+    title: 'News',
+    alt: 'google-news',
+    image: '/images/news.png',
+    link: '/news',
+  },
+  {
+    id: 'photo',
+    title: 'Photo',
+    alt: 'google-photo',
+    image: '/images/photo.png',
+    link: '/photo',
+  },
+  {
+    id: 'sheets',
+    title: 'Sheets',
+    alt: 'google-sheets',
+    image: '/images/sheets.png',
+    link: '/sheets',
+  },
+  {
+    id: 'slides',
+    title: 'Slides',
+    alt: 'google-slides',
+    image: '/images/slides.png',
+    link: '/slides',
+  },
+  {
+    id: 'tensor-flow',
+    title: 'Tensor Flow',
+    alt: 'google-tensor-flow',
+    image: '/images/tensor-flow.png',
+    link: '/tensor-flow',
+  },
+  {
+    id: 'youtube',
+    title: 'Youtube',
+    alt: 'google-youtube',
+    image: '/images/youtube.png',
+    link: '/youtube',
+  },
+  {
+    id: 'firebase',
+    title: 'Firebase',
+    alt: 'google-firebase',
+    image: '/images/firebase.png',
+    link: '/firebase',
+  },
+];
+
 const AppMenuDropdown = () => {
+  const [apps, setApps] = useState(googleApps);
+
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const items = Array.from(apps);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setApps(items);
+  };
+
   const dispatch = useDispatch();
   const closeModal = () => {
     dispatch(appDropdownAction.closeModal());
   };
   return (
-    <div className="dropdown" onClick={closeModal}>
-      <Link to='/firebase'>
-        <AppMenuItem
-          image={Firebase}
-          alt='google-firebase'
-          title='Firebase' />
-      </Link>
-      <Link to='/news'>
-        <AppMenuItem
-          image={News}
-          alt='google-news'
-          title='News' />
-      </Link>
-      <Link to='/tensorflow'>
-        <AppMenuItem
-          image={TensorFlow}
-          alt='google-tensorglow'
-          title='Tensor Flow' />
-      </Link>
-      <Link to='/duo'>
-        <AppMenuItem
-          image={Duo}
-          alt='google-duo'
-          title='Duo' />
-      </Link>
-      <Link to='/chats'>
-        <AppMenuItem
-          image={Chats}
-          alt='google-chats'
-          title='Chats' />
-      </Link>
-      <Link to='/chrome'>
-        <AppMenuItem
-          image={Chrome}
-          alt='google-chrome'
-          title='Chrome' />
-      </Link>
-      <Link to='/slides'>
-        <AppMenuItem
-          image={Slides}
-          alt='google-slides'
-          title='Slides' />
-      </Link>
-      <Link to='/documents'>
-        <AppMenuItem
-          image={Documents}
-          alt='google-documents'
-          title='Documents' />
-      </Link>
-      <Link to='/youtube'>
-        <AppMenuItem
-          image={YouTube}
-          alt='You-tube'
-          title='You Tube' />
-      </Link>
-      <Link to='/sheets'>
-        <AppMenuItem
-          image={Sheets}
-          alt='google-sheets'
-          title='Sheets' />
-      </Link>
-      <Link to='/gmail'>
-        <AppMenuItem
-          image={Gmail}
-          alt='google-gmail'
-          title='Gmail' />
-      </Link>
-      <Link to='/keep'>
-        <AppMenuItem
-          image={Keep}
-          alt='google-keep'
-          title='Keep' />
-      </Link>
-      <Link to='/drive'>
-        <AppMenuItem
-          image={Drive}
-          alt='google-drive'
-          title='Drive' />
-      </Link>
-      <Link to='/maps'>
-        <AppMenuItem
-          image={Maps}
-          alt='google-maps'
-          title='Maps' />
-      </Link>
-      <Link to='/photo'>
-        <AppMenuItem
-          image={Photo}
-          alt='google-photo'
-          title='Photo' />
-      </Link>
-      <Link to='/calendar'>
-        <AppMenuItem
-          image={Calendar}
-          alt='google-calendar'
-          title='Calendar' />
-      </Link>
-      <Link to='/meets'>
-        <AppMenuItem
-          image={Meets}
-          alt='google-meets'
-          title='Meets' />
-      </Link>
-    </div>
+    <DragDropContext onDragEnd={handleOnDragEnd}>
+      <Droppable droppableId="characters">
+        {(provided) => (
+          <div
+            className="dropdown"
+            onClick={closeModal}
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {googleApps.map(({id, title, alt, image, link}, index)=> {
+              return (
+                <Draggable key={id} draggableId={id} index={index}>
+                  {(provided) => (
+                    <Link
+                      to={link}
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <AppMenuItem
+                        image={image}
+                        alt={alt}
+                        title={title}
+                      />
+                    </Link>
+                  )}
+                </Draggable>
+              );
+            })}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 };
 
