@@ -3,6 +3,8 @@ import Logo from '../../assets/google_logo.png';
 import {Link} from 'react-router-dom';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import AppMenuDropdown from '../../components/AppMenuDropdown/AppMenuDropdown';
+import UserModal from '../../components/UserModal/UserModal';
+
 // import useGoogleSearch from '../../components/useGoogleSearch';
 
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
@@ -13,6 +15,11 @@ import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import MoreVertSharpIcon from '@mui/icons-material/MoreVertSharp';
 import Avatar from '@mui/material/Avatar';
 import AppsIcon from '@mui/icons-material/Apps';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+
+import PropTypes from 'prop-types';
+import {Fragment} from 'react';
 
 
 import {useSelector, useDispatch} from 'react-redux';
@@ -21,23 +28,38 @@ import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
 // mock data;
 import response from '../../response';
 
-const Search = () => {
+import {signInWithGoogle} from '../../firabase/firebase';
+
+
+const Search = ({currentUser}) => {
   const term = useSelector((state) => state.search.term);
   const dark = useSelector((state) => state.darkMode.dark);
   const hidden = useSelector((state) => state.dropdown.showAppModal);
+  const userModal = useSelector((state) => state.dropdown.showUserModal);
+
   const dispatch = useDispatch();
+
+  const closeUserModal = () => {
+    dispatch(appDropdownAction.closeUserModal());
+  };
   const toggleApp = () => {
     dispatch(appDropdownAction.toggleApp());
+    closeUserModal();
   };
   const closeAppModal = () => {
     dispatch(appDropdownAction.closeAppModal());
   };
 
+  const toggleUserModal = () => {
+    dispatch(appDropdownAction.toggleUserModal());
+    closeAppModal();
+    // closeSettingsModal();
+  };
   // Mock api
   const data = response;
 
   // const {data} = useGoogleSearch(term);
-
+  console.log('current user', currentUser);
   return (
     <div className="searchPage" data-theme={dark ? 'dark' : 'light'}>
       <div className="searchBody">
@@ -93,7 +115,25 @@ const Search = () => {
           <div className="searchPage__headerRight">
             <AppsIcon className="searchPage__appsIcon" onClick={toggleApp}/>
             {hidden && <AppMenuDropdown />}
-            <Avatar />
+            {currentUser ? <Fragment>
+              <Tooltip title={`${currentUser.multiFactor.user.displayName}`}>
+                <Avatar
+                  alt={currentUser.multiFactor.user.displayName}
+                  src={currentUser.multiFactor.user.photoURL}
+                  className="home__Avatar"
+                  onClick={toggleUserModal}
+                />
+              </Tooltip>
+              {userModal && <UserModal/>}
+            </Fragment> : (
+              <Button
+                variant="contained"
+                size="large"
+                onClick={signInWithGoogle}>
+                Sign In
+              </Button>
+            )}
+
           </div>
         </div>
         { term && (
@@ -130,6 +170,14 @@ const Search = () => {
       </div>
     </div>
   );
+};
+
+Search.propTypes = {
+  currentUser: PropTypes.object,
+};
+
+Search.defaultProps = {
+  currentUser: null,
 };
 
 export default Search;

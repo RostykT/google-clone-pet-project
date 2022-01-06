@@ -8,7 +8,6 @@ import {auth} from '../../firabase/firebase';
 
 const UserModal = () => {
   const user = auth.currentUser;
-  console.log(user);
   return (
     <div className="userModal">
       <div className="userModal__mainContent">

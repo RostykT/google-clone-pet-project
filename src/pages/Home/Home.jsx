@@ -3,6 +3,7 @@ import SearchInput from '../../components/SearchInput/SearchInput';
 import Logo from '../../assets/google_logo.png';
 import {Link} from 'react-router-dom';
 import {Fragment} from 'react';
+import PropTypes from 'prop-types';
 
 import AppsIcon from '@mui/icons-material/Apps';
 import Avatar from '@mui/material/Avatar';
@@ -16,11 +17,9 @@ import AppMenuDropdown from '../../components/AppMenuDropdown/AppMenuDropdown';
 import UserModal from '../../components/UserModal/UserModal';
 import Settings from '../../components/Settings/Settings';
 
-import {signInWithGoogle, auth} from '../../firabase/firebase';
+import {signInWithGoogle} from '../../firabase/firebase';
 
-const Home = () => {
-  const user = auth.currentUser;
-
+const Home = ({currentUser}) => {
   const dispatch = useDispatch();
 
   const closeAppModal = () => {
@@ -71,11 +70,11 @@ const Home = () => {
           <Link to='/images'>Images</Link>
           <AppsIcon className="home__appsIcon" onClick={toggleApp}/>
           {showAppModal && <AppMenuDropdown />}
-          {user ? <Fragment>
-            <Tooltip title={`${user.multiFactor.user.displayName}`}>
+          {currentUser ? <Fragment>
+            <Tooltip title={`${currentUser.multiFactor.user.displayName}`}>
               <Avatar
-                alt={user.multiFactor.user.displayName}
-                src={user.multiFactor.user.photoURL}
+                alt={currentUser.multiFactor.user.displayName}
+                src={currentUser.multiFactor.user.photoURL}
                 className="home__Avatar"
                 onClick={toggleUserModal}
               />
@@ -112,4 +111,11 @@ const Home = () => {
   );
 };
 
+Home.propTypes = {
+  currentUser: PropTypes.object,
+};
+
+Home.defaultProps = {
+  currentUser: null,
+};
 export default Home;
