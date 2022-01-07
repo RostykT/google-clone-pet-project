@@ -15,7 +15,7 @@
     /* background-color: var(--main-bg); */
     z-index: 100;
     align-items: center;
-    padding: 30px;
+    padding: 20px 30px;
     justify-content: space-between;
     border-bottom: 1px solid lightgrey;
 }
@@ -32,7 +32,7 @@ display: flex;
     margin-right: 20px;
 }
 
-.searchPage__appsIcon {
+.searchPage__appsIcon, .searchPage__settingsIcon {
     color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
     margin:  0, 10px, 0, 15px ;
@@ -43,12 +43,14 @@ display: flex;
     width: unset;
     margin: unset;
     max-width: unset;
+    padding: 5px 15px; 
 }
 .searchPage__options {
     display: flex;
     align-items: center;
     color: grey;
     margin-top: 5px;
+    font-size: 14px;
 }
 
 .searchPage__optionsRight,

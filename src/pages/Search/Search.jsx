@@ -17,6 +17,7 @@ import Avatar from '@mui/material/Avatar';
 import AppsIcon from '@mui/icons-material/Apps';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 import PropTypes from 'prop-types';
 import {Fragment} from 'react';
@@ -53,7 +54,6 @@ const Search = ({currentUser}) => {
   const data = response;
 
   // const {data} = useGoogleSearch(term);
-  console.log('current user', currentUser);
   return (
     <div className="searchPage" data-theme={dark ? 'dark' : 'light'}>
       <div className="searchBody">
@@ -107,6 +107,7 @@ const Search = ({currentUser}) => {
             </div>
           </div>
           <div className="searchPage__headerRight">
+            <SettingsIcon className="searchPage__settingsIcon"/>
             <AppsIcon className="searchPage__appsIcon" onClick={toggleApp}/>
             {hidden && <AppMenuDropdown />}
             {currentUser ? <Fragment>

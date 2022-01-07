@@ -61,7 +61,7 @@ const Home = ({currentUser}) => {
                 onClick={toggleUserModal}
               />
             </Tooltip>
-            {userModal && <UserModal/>}
+            {userModal && <UserModal currentUser={currentUser}/>}
           </Fragment> : (
             <Button
               variant="contained"

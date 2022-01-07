@@ -27,6 +27,7 @@ code {
   --button-bg:  #f8f8f8;
   --model-border: rgb(211, 211, 211);
   --box-shadow-input:  0px 0px 13px 2px rgba(34, 60, 80, 0.2);
+  --settings-modal-bg: rgb(245,245,245);
 }
 
 [data-theme="dark"] {
@@ -40,4 +41,5 @@ code {
   --button-bg: #43414190;
   --model-border:  #17181a;
   --box-shadow-input: 0px 0px 13px 2px rgba(0, 0, 0, 0.57);
+  --settings-modal-bg: #202124;
 }
