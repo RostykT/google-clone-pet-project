@@ -11,26 +11,40 @@ const Settings = () => {
   const closeSettingsModal = () => {
     dispatch(appDropdownAction.closeSettingsModal());
   };
+  const toggleSettings = () => {
+    dispatch(appDropdownAction.toggleSettings());
+  };
   const toggleDarkMode = () => {
     dispatch(darkModeAction.toggleDarkMode());
     closeSettingsModal();
   };
+
   const dark = useSelector((state) => state.darkMode.dark);
 
   return (
-    <div className="settings">
-      <ul>
-        <li>Search settings</li>
-        <li>Advanced search</li>
-        <li>Your data in Search</li>
-        <li>Search history</li>
-        <li>Search help</li>
-        <li>Send feedback</li>
-        <div className='settings_dark_light' onClick={toggleDarkMode}>
-           Theme:
-          { dark ? <LightModeOutlinedIcon/> : <DarkModeOutlinedIcon/> }
-        </div>
-      </ul>
+    <div
+      className="settings"
+      onClick={toggleSettings}
+    >
+      <div
+        className="settings_wrapper"
+        onClick={(e)=>{
+          e.stopPropagation();
+        }}
+      >
+        <ul>
+          <li>Search settings</li>
+          <li>Advanced search</li>
+          <li>Your data in Search</li>
+          <li>Search history</li>
+          <li>Search help</li>
+          <li>Send feedback</li>
+          <div className='settings_dark_light' onClick={toggleDarkMode}>
+            Theme:
+            { dark ? <LightModeOutlinedIcon/> : <DarkModeOutlinedIcon/> }
+          </div>
+        </ul>
+      </div>
     </div>
   );
 };

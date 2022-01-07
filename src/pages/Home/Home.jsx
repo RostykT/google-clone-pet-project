@@ -22,34 +22,16 @@ import {signInWithGoogle} from '../../firabase/firebase';
 const Home = ({currentUser}) => {
   const dispatch = useDispatch();
 
-  const closeAppModal = () => {
-    dispatch(appDropdownAction.closeAppModal());
-  };
-
-  const closeUserModal = () => {
-    dispatch(appDropdownAction.closeUserModal());
-  };
-
-  const closeSettingsModal = () => {
-    dispatch(appDropdownAction.closeSettingsModal());
-  };
-
   const toggleApp = () => {
     dispatch(appDropdownAction.toggleApp());
-    closeSettingsModal();
-    closeUserModal();
   };
 
   const toggleSettings = () => {
     dispatch(appDropdownAction.toggleSettings());
-    closeAppModal();
-    closeUserModal();
   };
 
   const toggleUserModal = () => {
     dispatch(appDropdownAction.toggleUserModal());
-    closeAppModal();
-    closeSettingsModal();
   };
 
   const showAppModal = useSelector((state) => state.dropdown.showAppModal);

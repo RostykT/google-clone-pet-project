@@ -1,4 +1,13 @@
 .dropdown {
+ height: 100vh;
+ width: 100vw;
+ position: fixed;
+ top:0;
+ left: 0;
+ z-index: 3;   
+}
+
+.wrapper{
     position: absolute;
     width: 330px;
     height: 420px;
@@ -12,9 +21,6 @@
     box-shadow: 1px 2px 5px 1px rgba(34, 60, 80, 0.2);
     right: 15px;
     padding: 10px 0px 0px 10px;
-}
-
-.wrapper{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;

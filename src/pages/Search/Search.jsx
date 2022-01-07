@@ -39,12 +39,8 @@ const Search = ({currentUser}) => {
 
   const dispatch = useDispatch();
 
-  const closeUserModal = () => {
-    dispatch(appDropdownAction.closeUserModal());
-  };
   const toggleApp = () => {
     dispatch(appDropdownAction.toggleApp());
-    closeUserModal();
   };
   const closeAppModal = () => {
     dispatch(appDropdownAction.closeAppModal());
@@ -52,8 +48,6 @@ const Search = ({currentUser}) => {
 
   const toggleUserModal = () => {
     dispatch(appDropdownAction.toggleUserModal());
-    closeAppModal();
-    // closeSettingsModal();
   };
   // Mock api
   const data = response;

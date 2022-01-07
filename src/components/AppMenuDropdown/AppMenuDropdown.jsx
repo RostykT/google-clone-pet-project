@@ -2,12 +2,22 @@ import './AppMenuDropdown.css';
 import AppMenuItem from '../AppMenuItem/AppMenuItem';
 
 import {Link} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+
 
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import {useState, useEffect} from 'react';
 
+// import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
+import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
+
 const AppMenuDropdown = () => {
   const [apps, setApps] = useState([]);
+  const dispatch = useDispatch();
+  const toggleApp = () => {
+    dispatch(appDropdownAction.toggleApp());
+  };
+
   useEffect(()=>{
     const fetchData = async () => {
       const response = await fetch('https://clone-a2884-default-rtdb.europe-west1.firebasedatabase.app/apps.json');
@@ -38,7 +48,7 @@ const AppMenuDropdown = () => {
   };
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" onClick={toggleApp}>
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="droppable">
           {(provided) => (
@@ -46,6 +56,9 @@ const AppMenuDropdown = () => {
               className="wrapper"
               {...provided.droppableProps}
               ref={provided.innerRef}
+              onClick={(e)=>{
+                e.stopPropagation();
+              }}
             >
               {apps.map(({id, title, alt, image, link}, index)=> {
                 return (
