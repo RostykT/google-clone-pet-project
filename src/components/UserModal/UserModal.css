@@ -11,7 +11,7 @@
     position: absolute;
     width: 420px;
     height: 520px;
-    background-color: var(--main-bg);
+    background-color: var(--modal-bg);
     z-index: 4;
     border-radius: 14px;
     border: 1px solid var(--model-border);
@@ -27,7 +27,7 @@
     align-items: center;
     flex-direction: column;
     margin-top:30px;
-    color:rgb(110, 110, 110);
+    color:var(--main-text-color);
 }
 
 .userModal__account {
@@ -52,11 +52,11 @@
 }
 .userModal__auth  button p {
     font-size: 16px;
-    color:rgb(110, 110, 110);
+    color:var(--main-text-color);
 }
 
 .userModal__auth  button:hover {
-    background-color: rgb(243, 243, 243)
+    background-color: var(--hover-bg);
 }
 
 .userModal__account_button {
@@ -67,7 +67,7 @@
     align-items: center;
     transition: all 0.5s;
     cursor: pointer;
-    color:rgb(110, 110, 110);
+    color:var(--main-text-color);
 }
 
 .userModal__account_button > .MuiSvgIcon-root {
@@ -75,14 +75,14 @@
 }
 
 .userModal__account_button:hover {
-    background-color: rgb(243, 243, 243)
+    background-color: var(--hover-bg);
 }
 
 .userModal__footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    color:rgb(110, 110, 110);
+    color:var(--main-text-color);
     margin-top: 17px;
     font-size: 15px
 }
@@ -110,7 +110,7 @@
 .userModal__mainContentInfo_Name {
     font-size: 20px;
     padding-bottom: 10px;
-    color:rgb(56, 56, 56);
+    color:var(--main-text-color);
 }
 
 .userModal__mainContentInfo_button {
@@ -122,5 +122,5 @@
 }
 
 .userModal__mainContentInfo_button:hover{
-    background-color: rgb(243, 243, 243)
+    background-color: var(--hover-bg);
 }

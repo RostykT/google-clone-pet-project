@@ -28,6 +28,10 @@ code {
   --model-border: rgb(211, 211, 211);
   --box-shadow-input:  0px 0px 13px 2px rgba(34, 60, 80, 0.2);
   --settings-modal-bg: rgb(245,245,245);
+  --modal-bg: #fff;
+  --hover-bg: rgb(243, 243, 243)
+  --text-result-color: rgba(0, 0, 0, 0.83);
+  --text-result-link-color: #1a0dad ;
 }
 
 [data-theme="dark"] {
@@ -42,4 +46,8 @@ code {
   --model-border:  #17181a;
   --box-shadow-input: 0px 0px 13px 2px rgba(0, 0, 0, 0.57);
   --settings-modal-bg: #202124;
+  --modal-bg: rgb(53, 53, 53);
+  --hover-bg: rgb(70, 70, 70);
+  --text-result-color: rgb(160, 160, 160);
+  --text-result-link-color: #8ab4f8;
 }

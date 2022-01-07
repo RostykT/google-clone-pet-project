@@ -13,7 +13,7 @@
     height: 420px;
     max-height: 530px;
     overflow-y: scroll;
-    background-color: var(--main-bg);
+    background-color: var(--modal-bg);
     z-index: 4;
     top: 10vh;
     border-radius: 14px;

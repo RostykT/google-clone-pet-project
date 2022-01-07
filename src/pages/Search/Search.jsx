@@ -1,5 +1,6 @@
 import './Search.css';
 import Logo from '../../assets/google_logo.png';
+import LogoDarkMode from '../../assets/google_logo_dark_mode.png';
 import {Link} from 'react-router-dom';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import AppMenuDropdown from '../../components/AppMenuDropdown/AppMenuDropdown';
@@ -25,6 +26,7 @@ import {Fragment} from 'react';
 
 import {useSelector, useDispatch} from 'react-redux';
 import {appDropdownAction} from '../../redux/appDropdown/appDropdownSlice';
+import {darkModeAction} from '../../redux/darkMode/darkModeSlice';
 
 // mock data;
 import response from '../../response';
@@ -50,6 +52,10 @@ const Search = ({currentUser}) => {
   const toggleUserModal = () => {
     dispatch(appDropdownAction.toggleUserModal());
   };
+
+  const toggleDarkMode = () => {
+    dispatch(darkModeAction.toggleDarkMode());
+  };
   // Mock api
   const data = response;
 
@@ -61,7 +67,7 @@ const Search = ({currentUser}) => {
           <div className="searchPage__headerLeft">
             <Link to='/'>
               <img
-                src={Logo}
+                src={ dark ? LogoDarkMode : Logo }
                 alt='google-logo'
                 className='searchPage__logo'
                 onClick={closeAppModal}/>
@@ -107,7 +113,10 @@ const Search = ({currentUser}) => {
             </div>
           </div>
           <div className="searchPage__headerRight">
-            <SettingsIcon className="searchPage__settingsIcon"/>
+            <SettingsIcon
+              className="searchPage__settingsIcon"
+              onClick={toggleDarkMode}
+            />
             <AppsIcon className="searchPage__appsIcon" onClick={toggleApp}/>
             {hidden && <AppMenuDropdown />}
             {currentUser ? <Fragment>

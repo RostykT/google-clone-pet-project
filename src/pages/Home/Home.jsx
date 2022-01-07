@@ -1,6 +1,7 @@
 import './Home.css';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import Logo from '../../assets/google_logo.png';
+import LogoDarkMode from '../../assets/google_logo_dark_mode.png';
 import {Link} from 'react-router-dom';
 import {Fragment} from 'react';
 import PropTypes from 'prop-types';
@@ -73,7 +74,7 @@ const Home = ({currentUser}) => {
         </div>
       </div>
       <div className="home__body">
-        <img src={Logo} alt={'google_logo'}/>
+        <img src={ dark ? LogoDarkMode : Logo } alt={'google_logo'}/>
         <div className="home__inputContainer">
           <SearchInput />
         </div>
